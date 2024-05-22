@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styleuser.css' %}">
+</head>
+<style>
+    /* Reset default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(238, 219,222 );
+}
+
+/* Container styles */
+.container {
+  width: 100%;
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styles */
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Content styles */
+.content {
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input box styles */
+.input-box {
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+label {
+  font-weight: bold;
+}
+
+/* Button styles */
+.button {
+  text-align: center;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(236, 156, 170);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Alert styles */
+.alert {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.alert p {
+  font-weight: bold;
+  color: red;
+}
+
+</style>
+<body>
+<div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="user-details">
+                <div class="input-box">
+                    <label>User Name :</label>
+                    <input type="text" name="username">
+                </div>
+                <div class="input-box">
+                    <label>E-Mail ID :</label>
+                    <input type="email" name="email">
+                </div>
+                <div class="input-box">
+                    <label>Password :</label>
+                    <input type="password" name="password">
+                </div>
+                <div class="input-box">
+                    <label>Confirm Password :</label>
+                    <input type="password" name="confirmpassword">
+                </div>
+            </div>
+            <div class="button">
+                <input type="submit" name="submit" value="SignUp">
+            </div>
+        </form>
+    </div>
+   {% for message in messages %} 
+   <script>
+    alert('{{message}}');
+   </script> 
+   {% endfor %} 
+</div>
+</body>
+</html>
